@@ -28,17 +28,25 @@ $ npm install -D @wasm-tool/wasm-pack-plugin html-webpack-plugin webpack$ k-cli 
 .
 ├── Cargo.lock
 ├── Cargo.toml
-├── index.html
-├── index.js
 ├── package-lock.json
 ├── package.json
+├── webpack.config.js
 └── src
     └── lib.rs
+    ├── index.html
+    └── index.js
 ```
 
-
 ## 実装
+
+記事の内容と違った点は以下。
+
+- `Cargo.toml`: `dependencies.web-sys`の`features`に`Window`、`HthmlElement`を追加
+- `lib.rs`: `body.append_child(&vdom)`を追加。これがないとDOMに追加されない。
+- `lib.rs`: エラー処理などを追加
+
 
 ## References
 - [Rust で仮想DOMを実装する‐１ \- Qiita](https://qiita.com/ne_no_usa/items/29ae8e5bcccfec41a626)
 - [Rust で wasm\-pack するときの準備 \- Qiita](https://qiita.com/ne_no_usa/items/c5552f20d4839fb5b728)
+- [Using web\-sys \- The \`wasm\-bindgen\` Guide](https://rustwasm.github.io/docs/wasm-bindgen/web-sys/using-web-sys.html)
